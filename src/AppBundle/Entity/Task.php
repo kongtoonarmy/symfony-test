@@ -9,6 +9,7 @@ class Task
 {
     protected $task;
     protected $dueDate;
+    protected $email;
 
     public function getTask()
     {
@@ -28,6 +29,16 @@ class Task
     public function setDueDate(\DateTime $dueDate = null)
     {
         $this->dueDate = $dueDate;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function setEmail($email)
+    {
+        $this->email = $email;
     }
 
     public static function loadValidatorMetadata(ClassMetadata $metadata)

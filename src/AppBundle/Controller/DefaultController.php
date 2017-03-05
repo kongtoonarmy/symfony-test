@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Task;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class DefaultController extends Controller
@@ -24,8 +25,16 @@ class DefaultController extends Controller
         $task->setDueDate(new \DateTime('tomorrow'));
 
         $form = $this->createFormBuilder($task)
-            ->add('task', TextType::class)
-            ->add('dueDate', DateType::class)
+            ->add('task', TextType::class, array(
+                'attr' => array(
+                    'maxlength' => 4
+                )
+            ))
+            ->add('dueDate', DateType::class, array(
+                'widget' => 'single_text',
+                'label' => 'Due-Date'
+            ))
+            ->add('email', EmailType::class)
             ->add('save', SubmitType::class, array('label' => 'Create Post'))
             ->getForm();
 
