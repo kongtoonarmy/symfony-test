@@ -7,10 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 use AppBundle\Entity\Task;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use AppBundle\Form\TaskType;
 
 class DefaultController extends Controller
 {
@@ -24,7 +21,7 @@ class DefaultController extends Controller
         $task->setTask('Write a blog post');
         $task->setDueDate(new \DateTime('tomorrow'));
 
-        $form = $this->createFormBuilder($task)
+        /*$form = $this->createFormBuilder($task)
             ->add('task', TextType::class, array(
                 'attr' => array(
                     'maxlength' => 4
@@ -36,7 +33,11 @@ class DefaultController extends Controller
             ))
             ->add('email', EmailType::class)
             ->add('save', SubmitType::class, array('label' => 'Create Post'))
-            ->getForm();
+            ->getForm();*/
+
+
+        // We use form classes instead
+        $form = $this->createForm(TaskType::class, $task);
 
         $form->handleRequest($request);
 
