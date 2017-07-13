@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Type;
+use AppBundle\Validator\Constraints\ContainsAlphanumeric;
 
 class Task
 {
@@ -44,6 +45,7 @@ class Task
     public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
         $metadata->addPropertyConstraint('task', new NotBlank());
+        $metadata->addPropertyConstraint('task', new ContainsAlphanumeric());
 
         $metadata->addPropertyConstraint('dueDate', new NotBlank());
         $metadata->addPropertyConstraint(

@@ -2,7 +2,9 @@
 
 namespace AppBundle\Controller;
 
+// Do not remove this line that it will give you for Semantical Error
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
